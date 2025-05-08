@@ -108,7 +108,7 @@ struct HabbitProfileView: View {
                         .padding(.horizontal)
                         .padding(.top, 20)
                     
-                    Spacer(minLength: 300)
+                    Spacer(minLength: getSpacing(for: UIScreen.main.bounds.width))
                     
                     if !UserDefaultsManager().isGuest() {
                         VStack(spacing: 20) {
@@ -215,6 +215,19 @@ struct HabbitProfileView: View {
         
         .fullScreenCover(isPresented: $habbitProfileModel.isLogin) {
             HabbitLogInView()
+        }
+    }
+    func getSpacing(for width: CGFloat) -> CGFloat {
+        if width > 850 {
+            return 910
+        } else if width > 650 {
+            return 760
+        } else if width < 380 {
+            return 350
+        } else if width > 430 {
+            return 470
+        } else {
+            return 350
         }
     }
 }

@@ -38,7 +38,7 @@ struct HabbitCreateHabbitView: View {
                         Spacer()
                     }
                     
-                    VStack(spacing: 10) {
+                    VStack(spacing: getSpacing(for: UIScreen.main.bounds.width)) {
                         VStack(spacing: 15) {
                             CustomTextFiled(text: $habbitCreateHabbitModel.name, placeholder: "Habit Name")
                             
@@ -185,6 +185,7 @@ struct HabbitCreateHabbitView: View {
                             }
                         }
                     }
+                    .padding(.top, getSpacing2(for: UIScreen.main.bounds.width))
                     
                     Button(action: {
                         habbitCreateHabbitModel.setTaskForUser(selectedDays: selectedDays)
@@ -219,6 +220,34 @@ struct HabbitCreateHabbitView: View {
         }
         .fullScreenCover(isPresented: $habbitCreateHabbitModel.isDissmss) {
             HabbitTabBarView()
+        }
+    }
+    
+    func getSpacing(for width: CGFloat) -> CGFloat {
+        if width > 850 {
+            return 30
+        } else if width > 650 {
+            return 30
+        } else if width < 380 {
+            return 10
+        } else if width > 430 {
+            return 20
+        } else {
+            return 10
+        }
+    }
+    
+    func getSpacing2(for width: CGFloat) -> CGFloat {
+        if width > 850 {
+            return 170
+        } else if width > 650 {
+            return 100
+        } else if width < 380 {
+            return 0
+        } else if width > 430 {
+            return 20
+        } else {
+            return 0
         }
     }
 }

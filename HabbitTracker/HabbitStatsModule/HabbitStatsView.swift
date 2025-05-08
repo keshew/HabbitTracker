@@ -79,34 +79,5 @@ struct HabbitStatsView: View {
 }
 
 
-struct Stats: View {
-    var title: String
-    var daysPassed: Int
-    var totalDays: Int
-    var isZeus: Bool
-    var image: String
-    var body: some View {
-        Rectangle()
-            .fill(.white)
-            .overlay {
-                VStack {
-                    Image(image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 120, height: 120)
-                    
-                    VStack(spacing: 5) {
-                        Text(title)
-                            .PTBold(size: 20, color: isZeus ? Color(red: 15/255, green: 66/255, blue: 124/255) :  Color(red: 87/255, green: 33/255, blue: 153/255))
-                            .multilineTextAlignment(.center)
-                        
-                        Text("Days: \(daysPassed) / \(totalDays)")
-                            .PT(size: 14, color: isZeus ? Color(red: 158/255, green: 180/255, blue: 203/255):  Color(red: 187/255, green: 166/255, blue: 214/255))
-                    }
-                }
-            }
-            .frame(width: 170, height: 230)
-            .cornerRadius(20)
-    }
-}
+
 

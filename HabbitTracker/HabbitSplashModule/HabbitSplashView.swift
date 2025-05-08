@@ -24,7 +24,7 @@ struct HabbitSplashView: View {
                         .frame(width: 300, height: 400)
                         .padding(.top, 30)
                     
-                    Spacer(minLength: 160)
+                    Spacer(minLength: getSpacing(for: UIScreen.main.bounds.width))
                     
                     VStack {
                         VStack(spacing: 20) {
@@ -77,6 +77,20 @@ struct HabbitSplashView: View {
         }
         .fullScreenCover(isPresented: $habbitSplashModel.isStarted) {
             HabbitSignView()
+        }
+    }
+    
+    func getSpacing(for width: CGFloat) -> CGFloat {
+        if width > 850 {
+            return 700
+        } else if width > 650 {
+            return 550
+        } else if width < 380 {
+            return 160
+        } else if width > 430 {
+            return 260
+        } else {
+            return 160
         }
     }
 }

@@ -92,7 +92,7 @@ struct HabbitSignView: View {
                         }
                     }
                     
-                    Spacer(minLength: 175)
+                    Spacer(minLength: getSpacing(for: UIScreen.main.bounds.width))
                     
                     HStack {
                         Text("Do you have an account?")
@@ -116,6 +116,20 @@ struct HabbitSignView: View {
         }
         .fullScreenCover(isPresented: $habbitSignModel.isSkip) {
             HabbitTabBarView()
+        }
+    }
+    
+    func getSpacing(for width: CGFloat) -> CGFloat {
+        if width > 850 {
+            return 700
+        } else if width > 650 {
+            return 550
+        } else if width < 380 {
+            return 175
+        } else if width > 430 {
+            return 255
+        } else {
+            return 175
         }
     }
 }

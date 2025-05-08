@@ -88,7 +88,7 @@ struct HabbitLogInView: View {
                         }
                     }
                     
-                    Spacer(minLength: 320)
+                    Spacer(minLength: getSpacing(for: UIScreen.main.bounds.width))
                     
                     HStack {
                         Text("Don’t have an account?")
@@ -115,6 +115,20 @@ struct HabbitLogInView: View {
         }
         .fullScreenCover(isPresented: $habbitLogInModel.isSetFirstTask) {
             HabbitChooseView()
+        }
+    }
+    
+    func getSpacing(for width: CGFloat) -> CGFloat {
+        if width > 850 {
+            return 850
+        } else if width > 650 {
+            return 690
+        } else if width < 380 {
+            return 300
+        } else if width > 430 {
+            return 390
+        } else {
+            return 320
         }
     }
 }
