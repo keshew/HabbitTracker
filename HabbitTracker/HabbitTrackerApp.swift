@@ -1,17 +1,20 @@
-//
-//  HabbitTrackerApp.swift
-//  HabbitTracker
-//
-//  Created by Артём Коротков on 03.05.2025.
-//
-
 import SwiftUI
 
 @main
 struct HabbitTrackerApp: App {
+    @StateObject var notificationManager = NotificationManager()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if UserDefaultsManager().checkLogin() {
+                HabbitTabBarView()
+            } else {
+                HabbitSplashView()
+                    .onAppear {
+                        UserDefaultsManager().quitQuest()
+                        notificationManager.requestPermission { granted in
+                                             }
+                    }
+            }
         }
     }
 }
