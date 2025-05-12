@@ -223,11 +223,11 @@ struct HabbitProfileView: View {
         } else if width > 650 {
             return 760
         } else if width < 380 {
-            return 350
+            return 300
         } else if width > 430 {
             return 470
         } else {
-            return 350
+            return 300
         }
     }
 }
