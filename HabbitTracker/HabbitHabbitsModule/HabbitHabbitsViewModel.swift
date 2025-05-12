@@ -66,3 +66,35 @@ extension Date {
         Calendar.current.startOfDay(for: self)
     }
 }
+
+extension HabbitHabbitsViewModel {
+    func toggleCompletion(for task: NetworkManager.Task, on date: Date) {
+        guard let taskId = task.id else { return }
+        let formatter = ISO8601DateFormatter()
+        let dateString = formatter.string(from: date.startOfDay)
+        
+        NetworkManager.shared.toggleTaskCompleteForDay(email: userEmail, taskId: taskId, date: dateString) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    guard let self = self else { return }
+                    if let index = self.tasks.firstIndex(where: { $0.id == taskId }) {
+                        var updatedTask = self.tasks[index]
+                        var completedDates = updatedTask.completedDates ?? []
+                        
+                        if completedDates.contains(dateString) {
+                            completedDates.removeAll(where: { $0 == dateString })
+                        } else {
+                            completedDates.append(dateString)
+                        }
+                        
+                        updatedTask.completedDates = completedDates
+                        self.tasks[index] = updatedTask
+                    }
+                case .failure(let error):
+                    self?.errorMessage = "Failed to update completion: \(error.localizedDescription)"
+                }
+            }
+        }
+    }
+}

@@ -90,7 +90,8 @@ class HabbitSetReminderViewModel: ObservableObject {
             timer: timerStr,
             repeatDays: repeatDays,
             isZeus: isZeus,
-            activity: activity
+            activity: activity,
+            completedDates: []
         )
         
         NotificationManager.shared.scheduleNotification(task: task)

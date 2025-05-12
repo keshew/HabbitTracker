@@ -78,6 +78,7 @@ final class NetworkManager {
         let repeatDays: [String]
         let isZeus: Bool
         let activity: [String: String]
+        var completedDates: [String]?
     }
 
     struct TaskResponse: Decodable {
@@ -88,6 +89,30 @@ final class NetworkManager {
 
     typealias TasksArray = [Task]
 
+    func toggleTaskCompleteForDay(email: String, taskId: String, date: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        let body: [String: Any] = [
+            "method": "toggleTaskCompleteForDay",
+            "email": email,
+            "taskId": taskId,
+            "date": date
+        ]
+        sendRequest(with: body) { (result: Result<SuccessResponse, Error>) in
+            switch result {
+            case .success(let response):
+                if let error = response.error {
+                    completion(.failure(NetworkError.serverError(error)))
+                } else if let _ = response.success {
+                    completion(.success(true))
+                } else {
+                    completion(.failure(NetworkError.invalidResponse))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    
     func register(username: String, email: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
         let body: [String: Any] = [
             "method": "register",
@@ -281,7 +306,7 @@ final class NetworkManager {
         sendRequest(with: body) { (result: Result<SuccessResponse, Error>) in
             switch result {
             case .success(let response):
-                if let success = response.success {
+                if let _ = response.success {
                     completion(.success(response))
                 } else if let error = response.error {
                     completion(.failure(NetworkError.serverError(error)))

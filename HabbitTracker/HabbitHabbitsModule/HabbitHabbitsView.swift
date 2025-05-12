@@ -75,6 +75,7 @@ struct HabbitHabbitsView: View {
                                 .frame(height: 0)
                             
                             let calendar = Calendar.current
+                            let selectedDayString = selectedDay != nil ? ISO8601DateFormatter().string(from: selectedDay!) : nil
                             
                             let filteredTasks = habbitHabbitsModel.tasks
                                 .filter { task in
@@ -91,14 +92,22 @@ struct HabbitHabbitsView: View {
                                     return (selectedDayStart >= startDay && selectedDayStart <= finishDay)
                                 }
                                 .sorted { task1, task2 in
-                                    guard let d1 = ISO8601DateFormatter().date(from: task1.dateStart),
-                                          let d2 = ISO8601DateFormatter().date(from: task2.dateStart) else {
-                                        return false
+                                    let d1 = ISO8601DateFormatter().date(from: task1.dateStart) ?? Date.distantPast
+                                    let d2 = ISO8601DateFormatter().date(from: task2.dateStart) ?? Date.distantPast
+                                    
+                                    let t1Completed = selectedDayString != nil ? (task1.completedDates?.contains(selectedDayString!) ?? false) : false
+                                    let t2Completed = selectedDayString != nil ? (task2.completedDates?.contains(selectedDayString!) ?? false) : false
+                                    
+                                    if t1Completed != t2Completed {
+                                        return !t1Completed
                                     }
+                                    
                                     return d1 < d2
                                 }
                             
                             ForEach(filteredTasks, id: \.id) { task in
+                                let isCompleted = selectedDayString != nil ? (task.completedDates?.contains(selectedDayString!) ?? false) : false
+                                
                                 Habbit(
                                     title: task.title,
                                     description: task.desc,
@@ -107,9 +116,11 @@ struct HabbitHabbitsView: View {
                                     isZeus: task.isZeus,
                                     image: task.image
                                 )
+                                .opacity(isCompleted ? 0.4 : 1)
+                                .animation(.easeInOut, value: isCompleted)
                                 .onTapGesture {
-                                    print("dateStart:", task.dateStart)
-                                    print("dateFinish:", task.dateFinish)
+                                    guard let selectedDay = selectedDay else { return }
+                                    habbitHabbitsModel.toggleCompletion(for: task, on: selectedDay)
                                 }
                             }
                             

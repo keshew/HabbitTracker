@@ -217,7 +217,7 @@ struct HabbitDetailStatsView: View {
 }
 
 #Preview {
-    HabbitDetailStatsView(task: NetworkManager.Task(id: "", title: "", desc: "", image: "", secondImage: "", dateStart: "", dateFinish: "", reminder: "", timer: "", repeatDays: [""], isZeus: false, activity: ["":""]))
+    HabbitDetailStatsView(task: NetworkManager.Task(id: "", title: "", desc: "", image: "", secondImage: "", dateStart: "", dateFinish: "", reminder: "", timer: "", repeatDays: [""], isZeus: false, activity: ["":""], completedDates: [""]))
 }
 
 import SwiftUI

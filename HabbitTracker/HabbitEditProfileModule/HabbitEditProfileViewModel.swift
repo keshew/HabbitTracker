@@ -24,7 +24,7 @@ class HabbitEditProfileViewModel: ObservableObject {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let response):
-                    if let success = response.success {
+                    if let _ = response.success {
                         self?.isSuccess = true
                         UserDefaultsManager().saveUsername(self!.name)
                         UserDefaultsManager().saveCurrentEmail(self!.email)
@@ -35,7 +35,7 @@ class HabbitEditProfileViewModel: ObservableObject {
                         self?.errorMessage = "Unknown error"
                         self?.isSuccess = false
                     }
-                case .failure(let error):
+                case .failure(_):
                     self?.errorMessage = "Something went wrong"
                     self?.isSuccess = false
                 }
