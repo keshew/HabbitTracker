@@ -35,8 +35,7 @@ class HabbitProfileViewModel: ObservableObject {
                         UserDefaultsManager().deletePhone()
                         UserDefaultsManager().deletePassword()
                     case .failure(let error):
-                        self?.errorMessage = error.localizedDescription
-                        self?.showError = true
+                        print(error)
                     }
                 }
             }

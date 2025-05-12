@@ -45,7 +45,7 @@ class HabbitLogInViewModel: ObservableObject {
                      UserDefaultsManager().savePassword(self!.password)
                      UserDefaultsManager().saveLoginStatus(true)
                  case .failure(_):
-                     self?.showError("Something went wromg")
+                     self?.showError("Something went wrong")
                  }
              }
          }

@@ -2,7 +2,8 @@ import SwiftUI
 
 struct HabbitProfileView: View {
     @StateObject var habbitProfileModel =  HabbitProfileViewModel()
-
+    @State var isAlert = false
+    
     var body: some View {
         ZStack {
             LinearGradient(colors: [Color(red: 52/255, green: 57/255, blue: 62/255),
@@ -133,7 +134,8 @@ struct HabbitProfileView: View {
                             }
                             
                             Button(action: {
-                                habbitProfileModel.deleteAccount(email: UserDefaultsManager().getEmail()!, password: UserDefaultsManager().getPassword()!)
+//                                habbitProfileModel.deleteAccount(email: UserDefaultsManager().getEmail()!, password: UserDefaultsManager().getPassword()!)
+                                isAlert = true
                             }) {
                                 Rectangle()
                                     .fill(Color(red: 238/255, green: 81/255, blue: 37/255))
@@ -195,13 +197,25 @@ struct HabbitProfileView: View {
                 }
             }
         }
-        .alert(isPresented: $habbitProfileModel.showError) {
-            Alert(
-                title: Text("Error"),
-                message: Text(habbitProfileModel.errorMessage),
-                dismissButton: .default(Text("OK"))
-            )
-        }
+        
+        .alert(isPresented: $isAlert) {
+                  Alert(
+                      title: Text("Confirming account deletion"),
+                      message: Text("Are you sure you want to delete the account?"),
+                      primaryButton: .destructive(Text("Delete")) {
+                          habbitProfileModel.deleteAccount(email: UserDefaultsManager().getEmail()!, password: UserDefaultsManager().getPassword()!)
+                      },
+                      secondaryButton: .cancel(Text("Cancel"))
+                  )
+              }
+        
+//        .alert(isPresented: $habbitProfileModel.showError) {
+//            Alert(
+//                title: Text("Error"),
+//                message: Text(habbitProfileModel.errorMessage),
+//                dismissButton: .default(Text("OK"))
+//            )
+//        }
         .fullScreenCover(isPresented: $habbitProfileModel.isLogOut) {
             HabbitLogInView()
         }
