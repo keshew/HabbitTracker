@@ -140,7 +140,7 @@ final class NetworkManager {
     func login(username: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
         let body: [String: Any] = [
             "method": "login",
-            "username": username,
+            "email": username,
             "pass": password
         ]
 

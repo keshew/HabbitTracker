@@ -298,6 +298,7 @@ struct FirstHabbit: View {
     var image: String
     var title: String
     var desc: String
+    var isZues: Bool
     var body: some View {
         Rectangle()
             .fill(.white)
@@ -310,10 +311,10 @@ struct FirstHabbit: View {
                     
                     VStack(alignment: .leading) {
                         Text(title)
-                            .PTBold(size: 20, color: Color(red: 15/255, green: 66/255, blue: 124/255))
+                            .PTBold(size: 20, color: isZues ? Color(red: 15/255, green: 66/255, blue: 124/255) : Color(red: 87/255, green: 33/255, blue: 152/255))
                         
                         Text(desc)
-                            .PT(size: 16, color: Color(red: 15/255, green: 66/255, blue: 124/255))
+                            .PT(size: 16, color: isZues ? Color(red: 15/255, green: 66/255, blue: 124/255) : Color(red: 87/255, green: 33/255, blue: 152/255))
                     }
                     
                     Spacer()

@@ -26,7 +26,7 @@ struct HabbitProfileView: View {
                         
                         Spacer()
                     }
-                
+                    
                     HStack {
                         if !UserDefaultsManager().isGuest() {
                             VStack(alignment: .leading) {
@@ -134,7 +134,6 @@ struct HabbitProfileView: View {
                             }
                             
                             Button(action: {
-//                                habbitProfileModel.deleteAccount(email: UserDefaultsManager().getEmail()!, password: UserDefaultsManager().getPassword()!)
                                 isAlert = true
                             }) {
                                 Rectangle()
@@ -199,23 +198,15 @@ struct HabbitProfileView: View {
         }
         
         .alert(isPresented: $isAlert) {
-                  Alert(
-                      title: Text("Confirming account deletion"),
-                      message: Text("Are you sure you want to delete the account?"),
-                      primaryButton: .destructive(Text("Delete")) {
-                          habbitProfileModel.deleteAccount(email: UserDefaultsManager().getEmail()!, password: UserDefaultsManager().getPassword()!)
-                      },
-                      secondaryButton: .cancel(Text("Cancel"))
-                  )
-              }
-        
-//        .alert(isPresented: $habbitProfileModel.showError) {
-//            Alert(
-//                title: Text("Error"),
-//                message: Text(habbitProfileModel.errorMessage),
-//                dismissButton: .default(Text("OK"))
-//            )
-//        }
+            Alert(
+                title: Text("Confirming account deletion"),
+                message: Text("Are you sure you want to delete the account?"),
+                primaryButton: .destructive(Text("Delete")) {
+                    habbitProfileModel.deleteAccount(email: UserDefaultsManager().getEmail()!, password: UserDefaultsManager().getPassword()!)
+                },
+                secondaryButton: .cancel(Text("Cancel"))
+            )
+        }
         .fullScreenCover(isPresented: $habbitProfileModel.isLogOut) {
             HabbitLogInView()
         }
@@ -233,13 +224,13 @@ struct HabbitProfileView: View {
     }
     func getSpacing(for width: CGFloat) -> CGFloat {
         if width > 850 {
-            return 910
+            return 850
         } else if width > 650 {
             return 760
         } else if width < 380 {
             return 300
         } else if width > 430 {
-            return 470
+            return 370
         } else {
             return 300
         }

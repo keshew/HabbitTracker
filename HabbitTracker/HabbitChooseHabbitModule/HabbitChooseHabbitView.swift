@@ -42,12 +42,13 @@ struct HabbitChooseHabbitView: View {
                                         ForEach(habbitChooseHabbitModel.contact.zeusHabbit.indices, id: \.self) { index in
                                             FirstHabbit(image: habbitChooseHabbitModel.contact.zeusHabbit[index].image,
                                                         title: habbitChooseHabbitModel.contact.zeusHabbit[index].title,
-                                                        desc: habbitChooseHabbitModel.contact.zeusHabbit[index].desc)
+                                                        desc: habbitChooseHabbitModel.contact.zeusHabbit[index].desc,
+                                                        isZues: isZeus)
                                             .onTapGesture {
                                                 habbitChooseHabbitModel.isNext = true
-                                                habbitChooseHabbitModel.tilte = habbitChooseHabbitModel.contact.marcoHabbit[index].title
-                                                habbitChooseHabbitModel.desc = habbitChooseHabbitModel.contact.marcoHabbit[index].desc
-                                                habbitChooseHabbitModel.image = habbitChooseHabbitModel.contact.marcoHabbit[index].image
+                                                habbitChooseHabbitModel.tilte = habbitChooseHabbitModel.contact.zeusHabbit[index].title
+                                                habbitChooseHabbitModel.desc = habbitChooseHabbitModel.contact.zeusHabbit[index].desc
+                                                habbitChooseHabbitModel.image = habbitChooseHabbitModel.contact.zeusHabbit[index].image
                                             }
                                         }
                                     }
@@ -73,7 +74,8 @@ struct HabbitChooseHabbitView: View {
                                         ForEach(habbitChooseHabbitModel.contact.marcoHabbit.indices, id: \.self) { index in
                                             FirstHabbit(image: habbitChooseHabbitModel.contact.marcoHabbit[index].image,
                                                         title: habbitChooseHabbitModel.contact.marcoHabbit[index].title,
-                                                        desc: habbitChooseHabbitModel.contact.marcoHabbit[index].desc)
+                                                        desc: habbitChooseHabbitModel.contact.marcoHabbit[index].desc,
+                                                        isZues: isZeus)
                                             .onTapGesture {
                                                 habbitChooseHabbitModel.isNext = true
                                                 habbitChooseHabbitModel.tilte = habbitChooseHabbitModel.contact.marcoHabbit[index].title
