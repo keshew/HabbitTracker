@@ -5,6 +5,7 @@ class HabbitHabbitsViewModel: ObservableObject {
     @Published var tasks: [NetworkManager.Task] = []
     @Published var errorMessage: String? = nil
     @Published var isAdd = false
+    @Published var isSign = false
     
     var userEmail: String {
         UserDefaultsManager().getEmail() ?? ""
@@ -17,8 +18,8 @@ class HabbitHabbitsViewModel: ObservableObject {
                 case .success(let tasks):
                     self?.tasks = tasks
                     self?.errorMessage = nil
-                case .failure(let error):
-                    self?.errorMessage = error.localizedDescription
+                case .failure(_):
+//                    self?.errorMessage = error.localizedDescription
                     self?.tasks = []
                 }
             }

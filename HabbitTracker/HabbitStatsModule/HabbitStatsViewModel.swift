@@ -18,8 +18,8 @@ class HabbitStatsViewModel: ObservableObject {
                 case .success(let tasks):
                     self?.tasks = tasks
                     self?.errorMessage = nil
-                case .failure(let error):
-                    self?.errorMessage = error.localizedDescription
+                case .failure(_):
+//                    self?.errorMessage = error.localizedDescription
                     self?.tasks = []
                 }
             }

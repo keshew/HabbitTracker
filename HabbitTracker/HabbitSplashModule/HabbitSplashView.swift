@@ -30,6 +30,7 @@ struct HabbitSplashView: View {
                         VStack(spacing: 20) {
                             Button(action: {
                                 habbitSplashModel.isStarted = true
+                                UserDefaultsManager().enterAsGuest()
                             }) {
                                 Rectangle()
                                     .fill(Color(red: 238/255, green: 81/255, blue: 37/255))
@@ -76,7 +77,7 @@ struct HabbitSplashView: View {
             HabbitLogInView()
         }
         .fullScreenCover(isPresented: $habbitSplashModel.isStarted) {
-            HabbitSignView()
+            HabbitTabBarView()
         }
     }
     

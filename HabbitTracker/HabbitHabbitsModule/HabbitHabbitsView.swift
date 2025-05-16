@@ -142,10 +142,23 @@ struct HabbitHabbitsView: View {
                         .frame(width: 60, height: 60)
                 }
                 .position(x: UIScreen.main.bounds.width / 1.12, y: UIScreen.main.bounds.height / 1.33)
+            } else {
+                Button(action: {
+                    habbitHabbitsModel.isSign = true
+                }) {
+                    Image(.addBtn)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 60, height: 60)
+                }
+                .position(x: UIScreen.main.bounds.width / 1.12, y: UIScreen.main.bounds.height / 1.33)
             }
         }
         .fullScreenCover(isPresented: $habbitHabbitsModel.isAdd, content: {
             HabbitCreateHabbitView()
+        })
+        .fullScreenCover(isPresented: $habbitHabbitsModel.isSign, content: {
+            HabbitSignView()
         })
         .onAppear {
             if !UserDefaultsManager().isGuest() {
