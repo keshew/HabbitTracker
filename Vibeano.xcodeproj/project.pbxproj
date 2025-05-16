@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		865DEF372DC554FA00B8D8D0 /* HabbitTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabbitTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		865DEF372DC554FA00B8D8D0 /* Vibeano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vibeano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		865DEF582DC5564800B8D8D0 /* Exceptions for "HabbitTracker" folder in "HabbitTracker" target */ = {
+		865DEF582DC5564800B8D8D0 /* Exceptions for "HabbitTracker" folder in "Vibeano" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 865DEF362DC554FA00B8D8D0 /* HabbitTracker */;
+			target = 865DEF362DC554FA00B8D8D0 /* Vibeano */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -24,7 +24,7 @@
 		865DEF392DC554FA00B8D8D0 /* HabbitTracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				865DEF582DC5564800B8D8D0 /* Exceptions for "HabbitTracker" folder in "HabbitTracker" target */,
+				865DEF582DC5564800B8D8D0 /* Exceptions for "HabbitTracker" folder in "Vibeano" target */,
 			);
 			path = HabbitTracker;
 			sourceTree = "<group>";
@@ -53,7 +53,7 @@
 		865DEF382DC554FA00B8D8D0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				865DEF372DC554FA00B8D8D0 /* HabbitTracker.app */,
+				865DEF372DC554FA00B8D8D0 /* Vibeano.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,9 +61,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		865DEF362DC554FA00B8D8D0 /* HabbitTracker */ = {
+		865DEF362DC554FA00B8D8D0 /* Vibeano */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 865DEF452DC554FA00B8D8D0 /* Build configuration list for PBXNativeTarget "HabbitTracker" */;
+			buildConfigurationList = 865DEF452DC554FA00B8D8D0 /* Build configuration list for PBXNativeTarget "Vibeano" */;
 			buildPhases = (
 				865DEF332DC554FA00B8D8D0 /* Sources */,
 				865DEF342DC554FA00B8D8D0 /* Frameworks */,
@@ -76,11 +76,11 @@
 			fileSystemSynchronizedGroups = (
 				865DEF392DC554FA00B8D8D0 /* HabbitTracker */,
 			);
-			name = HabbitTracker;
+			name = Vibeano;
 			packageProductDependencies = (
 			);
 			productName = HabbitTracker;
-			productReference = 865DEF372DC554FA00B8D8D0 /* HabbitTracker.app */;
+			productReference = 865DEF372DC554FA00B8D8D0 /* Vibeano.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -98,7 +98,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 865DEF322DC554FA00B8D8D0 /* Build configuration list for PBXProject "HabbitTracker" */;
+			buildConfigurationList = 865DEF322DC554FA00B8D8D0 /* Build configuration list for PBXProject "Vibeano" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -112,7 +112,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				865DEF362DC554FA00B8D8D0 /* HabbitTracker */,
+				865DEF362DC554FA00B8D8D0 /* Vibeano */,
 			);
 		};
 /* End PBXProject section */
@@ -330,7 +330,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		865DEF322DC554FA00B8D8D0 /* Build configuration list for PBXProject "HabbitTracker" */ = {
+		865DEF322DC554FA00B8D8D0 /* Build configuration list for PBXProject "Vibeano" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				865DEF432DC554FA00B8D8D0 /* Debug */,
@@ -339,7 +339,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		865DEF452DC554FA00B8D8D0 /* Build configuration list for PBXNativeTarget "HabbitTracker" */ = {
+		865DEF452DC554FA00B8D8D0 /* Build configuration list for PBXNativeTarget "Vibeano" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				865DEF462DC554FA00B8D8D0 /* Debug */,
